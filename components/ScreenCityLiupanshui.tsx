@@ -181,7 +181,7 @@ const ScreenCityLiupanshui: React.FC<Props> = ({ onBack }) => {
         
         <div className="space-y-4">
           <div className="relative h-60 rounded-[2.5rem] overflow-hidden shadow-xl group cursor-pointer">
-            <img src="/image/ski_resort.jpg" onError={handleScenicImgError} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+            <img src="image/ski_resort.jpg" onError={handleScenicImgError} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
             
             <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2 border border-white/20">
@@ -197,7 +197,7 @@ const ScreenCityLiupanshui: React.FC<Props> = ({ onBack }) => {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="relative h-48 rounded-[2rem] overflow-hidden shadow-lg group">
-               <img src="/image/wumeng_grassland.jpg" onError={handleScenicImgError} className="w-full h-full object-cover" />
+               <img src="image/wumeng_grassland.jpg" onError={handleScenicImgError} className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-white text-[13px] font-black leading-tight">乌蒙大草原</div>
@@ -205,7 +205,7 @@ const ScreenCityLiupanshui: React.FC<Props> = ({ onBack }) => {
                </div>
             </div>
             <div className="relative h-48 rounded-[2rem] overflow-hidden shadow-lg group">
-               <img src="/image/tuole_ginkgo.jpg" onError={handleScenicImgError} className="w-full h-full object-cover" />
+               <img src="image/tuole_ginkgo.jpg" onError={handleScenicImgError} className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                <div className="absolute bottom-4 left-4 right-4">
                   <div className="text-white text-[13px] font-black leading-tight">妥乐古银杏</div>

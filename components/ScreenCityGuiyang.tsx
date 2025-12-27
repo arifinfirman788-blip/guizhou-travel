@@ -11,7 +11,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       name: '01 / 肠旺面 · 晨起的仪式', 
       desc: '血嫩、面脆、哨香，这一口鲜辣开启了筑城的清晨。', 
       tag: '百年非遗',
-      img: '/image/肠旺面.jpeg'
+      img: 'image/肠旺面.jpeg'
     },
     { 
       name: '02 / 酸汤鱼 · 苗岭的馈赠', 
@@ -111,7 +111,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
               </div>
             </div>
             <div className="h-40 rounded-[2rem] overflow-hidden">
-              <img src="https://img.lenyiin.com/app/thumb.php?img=/image/2025/12/27/145446.webp" className="w-full h-full object-cover grayscale opacity-80" alt="文化传承" />
+              <img src="https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145446.webp" className="w-full h-full object-cover grayscale opacity-80" alt="文化传承" />
             </div>
           </div>
 
@@ -202,8 +202,8 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
         <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4">
            {[
-             { name: '隐山悦境', desc: '在森林里醒来，呼吸纯氧', img: '/image/饭店.png' },
-             { name: '古镇听风', desc: '青岩古道旁的百年静谧', img: '/image/饭店.png' },
+             { name: '隐山悦境', desc: '在森林里醒来，呼吸纯氧', img: 'image/饭店.png' },
+             { name: '古镇听风', desc: '青岩古道旁的百年静谧', img: 'image/饭店.png' },
            ].map((stay, i) => (
              <div key={i} className="min-w-[260px] group">
                 <div className="h-40 rounded-[2.5rem] overflow-hidden shadow-md mb-3">
@@ -225,7 +225,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
            </div>
         </div>
         <div className="relative h-64 rounded-[3rem] overflow-hidden shadow-2xl group">
-          <img src="https://img.lenyiin.com/app/thumb.php?img=/image/2025/12/27/145446.webp" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+          <img src="https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145446.webp" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
           <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent p-8 flex flex-col justify-end">
               <span className="text-purple-300 text-[9px] font-black tracking-[0.2em] uppercase mb-2">Pop Culture</span>
               <h4 className="text-white text-2xl font-black italic">青云市集 · 赛博贵阳</h4>

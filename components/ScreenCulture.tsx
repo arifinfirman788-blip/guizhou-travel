@@ -84,7 +84,7 @@ const ScreenCulture: React.FC = () => {
               </div>
             </div>
             <div className="relative h-60 rounded-[2.5rem] overflow-hidden group shadow-xl">
-               <img src="/image/8b28c747fb1bfeccd123c823c726afa5.jpeg" className="w-full h-full object-cover" onError={handleImgError} />
+               <img src="image/8b28c747fb1bfeccd123c823c726afa5.jpeg" className="w-full h-full object-cover" onError={handleImgError} />
                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                <div className="absolute bottom-6 left-6">
                   <div className="text-white text-xl font-black italic tracking-tighter">黄果树瀑布</div>

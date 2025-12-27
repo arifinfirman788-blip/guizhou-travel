@@ -7,7 +7,7 @@ const ScreenMap: React.FC = () => {
       {/* Background Fake Map */}
       <div 
         className="absolute inset-0 grayscale opacity-40 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/image/8b28c747fb1bfeccd123c823c726afa5.jpeg)' }}
+        style={{ backgroundImage: 'url(image/8b28c747fb1bfeccd123c823c726afa5.jpeg)' }}
       ></div>
 
       {/* Map Controls */}
