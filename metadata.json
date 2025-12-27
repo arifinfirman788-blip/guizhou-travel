@@ -1,0 +1,5 @@
+{
+  "name": "Guizhou Amap Integration Solution",
+  "description": "An interactive UI prototype showcasing the integration of Guizhou tourism services into the Amap (Gaode) ecosystem, featuring city search integration, map bubbles, and an AI travel assistant.",
+  "requestFramePermissions": []
+}
