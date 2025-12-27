@@ -170,7 +170,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
         <div className="space-y-6">
           <div className="relative h-52 rounded-[2.5rem] overflow-hidden shadow-lg group">
-            <img src="/image/8b28c747fb1bfeccd123c823c726afa5.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+            <img src="image/8b28c747fb1bfeccd123c823c726afa5.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6">
                <h4 className="text-white text-xl font-black italic">甲秀楼 · 傲立南明河</h4>

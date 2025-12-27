@@ -13,25 +13,25 @@ const ScreenCityLiupanshui: React.FC<Props> = ({ onBack }) => {
       name: '01 / 水城羊肉粉', 
       desc: '滚烫羊汤浇注米粉，黑山羊肉片薄如纸，一碗入魂。', 
       tag: '国家地理标志',
-      img: '/image/yangroufen.jpg' // Placeholder, will fallback
+      img: 'image/yangroufen.jpg' // Placeholder, will fallback
     },
     { 
       name: '02 / 水城烙锅', 
       desc: '中间凸起的特制砂锅，荤素皆可烙，蘸上五香辣椒面。', 
       tag: '西部一绝',
-      img: '/image/laoguo.jpg'
+      img: 'image/laoguo.jpg'
     },
     { 
       name: '03 / 盘县火腿', 
       desc: '肉色红润，香味浓郁，形似琵琶，皮色腊黄。', 
       tag: '非遗美食',
-      img: '/image/ham.jpg' // Placeholder
+      img: 'image/ham.jpg' // Placeholder
     },
     { 
       name: '04 / 荷叶糯米鸡', 
       desc: '荷叶包裹糯米与鸡肉，清香扑鼻，软糯可口。', 
       tag: '街头风味',
-      img: '/image/nuomiji.jpg' // Placeholder
+      img: 'image/nuomiji.jpg' // Placeholder
     }
   ];
 
@@ -54,7 +54,7 @@ const ScreenCityLiupanshui: React.FC<Props> = ({ onBack }) => {
         {/* 1. Hero Promotion Section - Cool City Theme */}
         <div className="relative h-[480px] w-full flex-shrink-0 group overflow-hidden">
         <img 
-          src="/image/liupanshui_hero.jpg" 
+          src="image/liupanshui_hero.jpg" 
           onError={(e) => (e.currentTarget.src = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&fit=crop')}
           alt="中国凉都" 
           className="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-105"
