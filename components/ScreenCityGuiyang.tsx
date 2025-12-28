@@ -1,4 +1,5 @@
 
+/// <reference types="vite/client" />
 import React from 'react';
 
 interface Props {
@@ -6,6 +7,21 @@ interface Props {
 }
 
 const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
+  const quickActions = [
+    { name: '景区购票', icon: '🎫', color: 'bg-orange-50 text-orange-600' },
+    { name: '酒店住宿', icon: '🏨', color: 'bg-blue-50 text-blue-600' },
+    { name: '城市线路', icon: '🗺️', color: 'bg-emerald-50 text-emerald-600' },
+    { name: '餐饮美食', icon: '🍲', color: 'bg-red-50 text-red-600' },
+    { name: '品质好物', icon: '🎁', color: 'bg-purple-50 text-purple-600' },
+  ];
+
+  const newsItems = [
+    "“爽爽贵阳”年度文旅推介会成功举办",
+    "贵阳地铁3号线正式开通运营，串联核心景区",
+    "青云市集入选全国夜间消费聚集区名单",
+    "避暑季来临，贵阳多景区推出门票优惠政策"
+  ];
+
   const gourmetList = [
     { 
       name: '01 / 肠旺面 · 晨起的仪式', 
@@ -34,16 +50,16 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
   ];
 
   return (
-    <div className="h-full bg-white flex flex-col overflow-y-auto no-scrollbar pb-16 relative">
+    <div className="h-full bg-slate-50 flex flex-col overflow-y-auto no-scrollbar pb-16 relative">
       
-      {/* 1. Hero Promotion Section */}
-      <div className="relative h-[420px] w-full flex-shrink-0">
+      {/* 1. Dynamic Hero Section */}
+      <div className="relative h-[460px] w-full flex-shrink-0">
         <img 
           src={`${import.meta.env.BASE_URL}guiyang/banner.jpg`} 
           alt="爽爽贵阳" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-slate-50"></div>
         
         <button 
           onClick={onBack}
@@ -52,44 +68,152 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
           ‹
         </button>
 
-        <div className="absolute top-16 right-6 writing-vertical-lr text-white z-10">
-          <h1 className="text-4xl font-serif font-black tracking-[0.4em] drop-shadow-xl">
+        {/* Vertical Title - Non-traditional placement */}
+        <div className="absolute top-20 right-8 writing-vertical-lr text-white z-10">
+          <h1 className="text-5xl font-serif font-black tracking-[0.5em] drop-shadow-2xl opacity-90">
             爽爽贵阳
           </h1>
-          <p className="mt-4 text-[10px] font-bold tracking-widest opacity-80 uppercase">
-            Summer Capital of China
+          <p className="mt-6 text-[11px] font-bold tracking-[0.3em] opacity-60 uppercase">
+            Forest City / Summer Capital
           </p>
         </div>
 
-        <div className="absolute bottom-8 left-6 right-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-600 text-white text-[10px] font-black tracking-widest uppercase mb-4 rounded-sm">
-            City Focus / 林城之光
+        {/* Search Bar - Floating Glassmorphism */}
+        <div className="absolute bottom-16 left-6 right-6 z-20">
+          <div className="bg-white/80 backdrop-blur-xl p-2 rounded-2xl shadow-2xl border border-white/50 flex items-center gap-3">
+            <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white shrink-0">
+              🔍
+            </div>
+            <input 
+              type="text" 
+              placeholder="搜索景区、门票、美食..." 
+              className="bg-transparent border-none outline-none text-sm font-medium text-slate-700 w-full placeholder:text-slate-400"
+            />
           </div>
-          <h2 className="text-4xl font-black text-slate-900 leading-tight italic tracking-tighter">
-            避暑之都 · <span className="text-blue-600">光影林城</span>
-          </h2>
-          <p className="mt-2 text-slate-500 text-xs font-medium leading-relaxed max-w-[80%]">
-            在黔中的山水间，遇见一座会呼吸的城市。这里不仅有23℃的清凉，更有沉淀千年的文化余味。
-          </p>
         </div>
       </div>
 
-      {/* 2. City Narrative */}
-      <section className="px-6 py-8">
-        <div className="p-6 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative overflow-hidden">
-          <div className="absolute -top-4 -right-4 w-20 h-20 bg-emerald-500/5 rounded-full blur-2xl"></div>
-          <p className="text-slate-600 text-sm leading-relaxed font-serif italic">
-            “贵阳，简称‘筑’，是贵州省省会。这里群山环抱，绿带环绕，森林覆盖率居全国省会城市前列，被誉为‘中国避暑之都’。”
-          </p>
-          <div className="mt-4 flex gap-4 text-[10px] font-black text-emerald-700 uppercase tracking-widest border-t border-slate-200 pt-4">
-            <span># 森林之城</span>
-            <span># 气候适宜</span>
-            <span># 多彩文化</span>
+      {/* 2. Quick Actions - Modern Grid */}
+      <section className="px-6 -mt-8 relative z-30">
+        <div className="grid grid-cols-5 gap-4">
+          {quickActions.map((action, i) => (
+            <div key={i} className="flex flex-col items-center gap-2">
+              <div className={`w-14 h-14 ${action.color} rounded-2xl shadow-sm flex items-center justify-center text-2xl transition-transform active:scale-90`}>
+                {action.icon}
+              </div>
+              <span className="text-[10px] font-black text-slate-600 tracking-tighter whitespace-nowrap">
+                {action.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. News Ticker */}
+      <section className="px-6 mt-10">
+        <div className="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-slate-100 overflow-hidden">
+          <div className="flex items-center gap-2 shrink-0 border-r border-slate-100 pr-4">
+            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+            <span className="text-xs font-black text-slate-900 italic">热点资讯</span>
+          </div>
+          <div className="flex-1 overflow-hidden">
+            <div className="animate-scroll-y flex flex-col gap-1">
+              {newsItems.map((news, i) => (
+                <p key={i} className="text-[11px] text-slate-500 font-medium truncate">
+                  {news}
+                </p>
+              ))}
+            </div>
+          </div>
+          <span className="text-slate-300 text-xs">›</span>
+        </div>
+      </section>
+
+      {/* 4. City Impression - Bento Grid (Official Content) */}
+      <section className="px-6 mt-12">
+        <div className="flex items-end justify-between mb-6">
+           <div>
+             <span className="text-[10px] font-black text-emerald-600 tracking-widest uppercase">Official / 印象</span>
+             <h3 className="text-3xl font-black text-slate-800 italic">城市印象 · 多彩筑城</h3>
+           </div>
+           <button className="text-[10px] font-black text-slate-400 hover:text-emerald-600 transition-colors">查看更多 ›</button>
+        </div>
+        
+        <div className="grid grid-cols-6 grid-rows-2 gap-3 h-[400px]">
+          {/* Main Video Card */}
+          <div className="col-span-4 row-span-2 relative rounded-3xl overflow-hidden shadow-xl group cursor-pointer">
+            <img 
+              src={`${import.meta.env.BASE_URL}guiyang/banner.jpg`} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              alt="贵阳文旅视频"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+              <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 group-hover:scale-110 transition-transform">
+                <span className="ml-1">▶</span>
+              </div>
+            </div>
+            <div className="absolute top-6 left-6">
+               <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                 <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
+                 <span className="text-[9px] text-white font-black uppercase tracking-widest">Live Official</span>
+               </div>
+            </div>
+            <div className="absolute bottom-6 left-6 right-6">
+              <h4 className="text-white text-2xl font-black italic drop-shadow-lg">爽爽贵阳 · 遇见林城</h4>
+              <p className="text-white/80 text-[10px] mt-2 font-medium line-clamp-1">贵阳市文旅厅官方推介视频：在这里，看见多彩贵州的心跳。</p>
+            </div>
+          </div>
+          
+          {/* Photo Cards */}
+          <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+            <img src={`${import.meta.env.BASE_URL}guiyang/jiaxiulou.jpeg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="图文介绍" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div className="absolute bottom-3 left-3">
+              <p className="text-white text-[10px] font-black">城市图文</p>
+              <p className="text-white/60 text-[8px] font-bold">夜色南明河</p>
+            </div>
+          </div>
+          <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+            <img src={`${import.meta.env.BASE_URL}guiyang/yangmingxinxue.png`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="文化展示" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div className="absolute bottom-3 left-3">
+              <p className="text-white text-[10px] font-black">文化巡礼</p>
+              <p className="text-white/60 text-[8px] font-bold">知行合一</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. [传承 Culture] - Cultural Heritage (NEW SECTION) */}
+      {/* 5. [线路 Route] - Recommended Routes (NEW SECTION) */}
+      <section className="px-6 mt-16">
+        <div className="flex items-end justify-between mb-6">
+           <div>
+             <span className="text-[10px] font-black text-blue-600 tracking-widest uppercase">Routes / 线路</span>
+             <h3 className="text-2xl font-black text-slate-800 italic">经典线路 · 玩转筑城</h3>
+           </div>
+        </div>
+        <div className="space-y-4">
+          {[
+            { name: '“森”呼吸·康养之旅', desc: '黔灵山公园 - 观山湖公园 - 贵阳森林公园', time: '1-2天', color: 'border-emerald-100 bg-emerald-50/30' },
+            { name: '“筑”精魂·文化之旅', desc: '甲秀楼 - 翠微园 - 阳明祠 - 省博物馆', time: '1天', color: 'border-blue-100 bg-blue-50/30' },
+          ].map((route, i) => (
+            <div key={i} className={`p-5 rounded-[2rem] border ${route.color} relative overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform`}>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-base font-black text-slate-800">{route.name}</h4>
+                  <span className="text-[9px] font-black px-2 py-0.5 bg-white/60 rounded-full text-slate-500">{route.time}</span>
+                </div>
+                <p className="text-[11px] text-slate-500 font-medium">{route.desc}</p>
+              </div>
+              <div className="absolute top-1/2 -right-4 -translate-y-1/2 text-6xl opacity-[0.05] font-black italic group-hover:right-0 transition-all duration-500">
+                ROUTE
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6. [传承 Culture] - Cultural Heritage */}
       <section className="px-6 mt-4">
         <div className="flex items-end justify-between mb-6">
            <div>
@@ -204,8 +328,8 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
         <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4">
            {[
-             { name: '隐山悦境', desc: '在森林里醒来，呼吸纯氧', img: '/guizhou-travel/image/饭店.png' },
-             { name: '古镇听风', desc: '青岩古道旁的百年静谧', img: '/guizhou-travel/image/饭店.png' },
+             { name: '隐山悦境', desc: '在森林里醒来，呼吸纯氧', img: `${import.meta.env.BASE_URL}image/饭店.png` },
+             { name: '古镇听风', desc: '青岩古道旁的百年静谧', img: `${import.meta.env.BASE_URL}image/饭店.png` },
            ].map((stay, i) => (
              <div key={i} className="min-w-[260px] group">
                 <div className="h-40 rounded-[2.5rem] overflow-hidden shadow-md mb-3">
@@ -238,9 +362,73 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
       </section>
 
+      {/* 8. [物 Goods] - Quality Goods (NEW SECTION) */}
+      <section className="mt-16 px-6">
+        <div className="flex items-end justify-between mb-6">
+           <div>
+             <span className="text-[10px] font-black text-purple-600 tracking-widest uppercase">Select / 品质</span>
+             <h3 className="text-2xl font-black text-slate-800 italic">筑城好物 · 品质之选</h3>
+           </div>
+        </div>
+        <div className="flex gap-5 overflow-x-auto no-scrollbar pb-4">
+           {[
+             { name: '苗绣艺术品', price: '¥299', img: `${import.meta.env.BASE_URL}image/黔东南.png` },
+             { name: '都匀毛尖', price: '¥158', img: `${import.meta.env.BASE_URL}image/铜仁.png` },
+             { name: '蜡染围巾', price: '¥120', img: `${import.meta.env.BASE_URL}image/安顺.png` },
+           ].map((item, i) => (
+             <div key={i} className="min-w-[160px] bg-white rounded-3xl p-3 shadow-sm border border-slate-50">
+                <div className="h-32 rounded-2xl overflow-hidden mb-3">
+                   <img src={item.img} className="w-full h-full object-cover" alt={item.name} />
+                </div>
+                <h5 className="text-xs font-black text-slate-800 px-1">{item.name}</h5>
+                <p className="text-emerald-600 text-[10px] font-bold px-1 mt-1">{item.price}</p>
+             </div>
+           ))}
+        </div>
+      </section>
+
+      {/* 9. [活 Activity] - Cultural & Tourism Activities (NEW SECTION) */}
+      <section className="mt-16 px-6 mb-20">
+        <div className="flex items-end justify-between mb-6">
+           <div>
+             <span className="text-[10px] font-black text-orange-600 tracking-widest uppercase">Events / 盛事</span>
+             <h3 className="text-2xl font-black text-slate-800 italic">文旅盛会 · 精彩不停</h3>
+           </div>
+        </div>
+        <div className="space-y-4">
+          {[
+            { title: '多彩贵阳·避暑季启动仪式', date: '2025.07.15', tag: '最热', color: 'bg-red-500' },
+            { title: '青岩古镇汉服文化周', date: '2025.08.01', tag: '推荐', color: 'bg-orange-500' },
+          ].map((act, i) => (
+            <div key={i} className="bg-white p-5 rounded-[2rem] shadow-sm border border-slate-100 flex items-center justify-between group active:scale-95 transition-transform">
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <span className={`px-1.5 py-0.5 ${act.color} text-[8px] text-white font-black rounded-sm`}>{act.tag}</span>
+                  <h5 className="text-sm font-black text-slate-800">{act.title}</h5>
+                </div>
+                <p className="text-[10px] text-slate-400 font-bold tracking-wider">{act.date}</p>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-orange-50 group-hover:text-orange-500 transition-colors">
+                →
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <style dangerouslySetInnerHTML={{ __html: `
         .writing-vertical-lr {
           writing-mode: vertical-lr;
+        }
+        @keyframes scroll-y {
+          0% { transform: translateY(0); }
+          25% { transform: translateY(-20px); }
+          50% { transform: translateY(-40px); }
+          75% { transform: translateY(-60px); }
+          100% { transform: translateY(0); }
+        }
+        .animate-scroll-y {
+          animation: scroll-y 12s infinite;
         }
       `}} />
     </div>
