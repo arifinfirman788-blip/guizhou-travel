@@ -8,11 +8,11 @@ interface Props {
 
 const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
   const quickActions = [
-    { name: '景区购票', icon: '🎫', color: 'bg-orange-50 text-orange-600' },
-    { name: '酒店住宿', icon: '🏨', color: 'bg-blue-50 text-blue-600' },
-    { name: '城市线路', icon: '🗺️', color: 'bg-emerald-50 text-emerald-600' },
-    { name: '餐饮美食', icon: '🍲', color: 'bg-red-50 text-red-600' },
-    { name: '品质好物', icon: '🎁', color: 'bg-purple-50 text-purple-600' },
+    { name: '景区购票', icon: '🎫', color: 'text-orange-600', bgColor: 'bg-orange-50' },
+    { name: '酒店住宿', icon: '🏨', color: 'text-blue-600', bgColor: 'bg-blue-50' },
+    { name: '城市线路', icon: '🗺️', color: 'text-emerald-600', bgColor: 'bg-emerald-50' },
+    { name: '餐饮美食', icon: '🍲', color: 'text-red-600', bgColor: 'bg-red-50' },
+    { name: '品质好物', icon: '🎁', color: 'text-purple-600', bgColor: 'bg-purple-50' },
   ];
 
   const newsItems = [
@@ -20,6 +20,30 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
     "贵阳地铁3号线正式开通运营，串联核心景区",
     "青云市集入选全国夜间消费聚集区名单",
     "避暑季来临，贵阳多景区推出门票优惠政策"
+  ];
+
+  const routeList = [
+    { 
+      name: '“森”呼吸·康养之旅', 
+      desc: '黔灵山公园 - 观山湖公园 - 贵阳森林公园', 
+      time: '1-2天', 
+      img: `${import.meta.env.BASE_URL}guiyang/qianlings.png`,
+      tag: '康养生态'
+    },
+    { 
+      name: '“筑”精魂·文化之旅', 
+      desc: '甲秀楼 - 翠微园 - 阳明祠 - 省博物馆', 
+      time: '1天', 
+      img: `${import.meta.env.BASE_URL}guiyang/jiaxiulou.jpeg`,
+      tag: '人文历史'
+    },
+    { 
+      name: '“寻”古韵·时光之旅', 
+      desc: '青岩古镇 - 花溪湿地 - 夜郎谷', 
+      time: '2天', 
+      img: `${import.meta.env.BASE_URL}guiyang/qingyanguzhen.png`,
+      tag: '古镇探秘'
+    }
   ];
 
   const gourmetList = [
@@ -93,120 +117,136 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
       </div>
 
-      {/* 2. Quick Actions - Modern Grid */}
-      <section className="px-6 -mt-8 relative z-30">
-        <div className="grid grid-cols-5 gap-4">
-          {quickActions.map((action, i) => (
-            <div key={i} className="flex flex-col items-center gap-2">
-              <div className={`w-14 h-14 ${action.color} rounded-2xl shadow-sm flex items-center justify-center text-2xl transition-transform active:scale-90`}>
-                {action.icon}
+      {/* 2. Quick Actions - Refined Style */}
+      <section className="px-6 -mt-10 relative z-30">
+        <div className="bg-white/60 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-xl border border-white/50">
+          <div className="grid grid-cols-5 gap-2">
+            {quickActions.map((action, i) => (
+              <div key={i} className="flex flex-col items-center gap-2 group cursor-pointer">
+                <div className={`w-12 h-12 ${action.bgColor} rounded-2xl flex items-center justify-center text-xl transition-all duration-300 group-hover:scale-110 group-active:scale-95 shadow-sm`}>
+                  {action.icon}
+                </div>
+                <span className="text-[10px] font-bold text-slate-600 tracking-tighter whitespace-nowrap">
+                  {action.name}
+                </span>
               </div>
-              <span className="text-[10px] font-black text-slate-600 tracking-tighter whitespace-nowrap">
-                {action.name}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* 3. News Ticker */}
-      <section className="px-6 mt-10">
-        <div className="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-slate-100 overflow-hidden">
-          <div className="flex items-center gap-2 shrink-0 border-r border-slate-100 pr-4">
-            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-            <span className="text-xs font-black text-slate-900 italic">热点资讯</span>
+      <section className="px-6 mt-6">
+        <div className="bg-emerald-50/50 backdrop-blur-sm rounded-2xl p-3 flex items-center gap-3 border border-emerald-100/50">
+          <div className="flex items-center gap-2 shrink-0 border-r border-emerald-200/50 pr-3">
+            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+            <span className="text-[10px] font-black text-emerald-800 tracking-wider">最新动态</span>
           </div>
-          <div className="flex-1 overflow-hidden">
+          <div className="flex-1 h-5 overflow-hidden">
             <div className="animate-scroll-y flex flex-col gap-1">
               {newsItems.map((news, i) => (
-                <p key={i} className="text-[11px] text-slate-500 font-medium truncate">
+                <p key={i} className="text-[11px] text-emerald-900/70 font-medium truncate leading-5">
                   {news}
                 </p>
               ))}
             </div>
           </div>
-          <span className="text-slate-300 text-xs">›</span>
+          <span className="text-emerald-300 text-xs">›</span>
         </div>
       </section>
 
-      {/* 4. City Impression - Bento Grid (Official Content) */}
-      <section className="px-6 mt-12">
-        <div className="flex items-end justify-between mb-6">
-           <div>
-             <span className="text-[10px] font-black text-emerald-600 tracking-widest uppercase">Official / 印象</span>
-             <h3 className="text-3xl font-black text-slate-800 italic">城市印象 · 多彩筑城</h3>
-           </div>
-           <button className="text-[10px] font-black text-slate-400 hover:text-emerald-600 transition-colors">查看更多 ›</button>
-        </div>
-        
-        <div className="grid grid-cols-6 grid-rows-2 gap-3 h-[400px]">
-          {/* Main Video Card */}
-          <div className="col-span-4 row-span-2 relative rounded-3xl overflow-hidden shadow-xl group cursor-pointer">
-            <img 
-              src={`${import.meta.env.BASE_URL}guiyang/banner.jpg`} 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-              alt="贵阳文旅视频"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-              <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 group-hover:scale-110 transition-transform">
-                <span className="ml-1">▶</span>
+      {/* 4. Bento Grid - Impression, Attractions, Activities */}
+      <section className="px-6 mt-10">
+        <div className="grid grid-cols-2 gap-4 h-[340px]">
+          {/* Left: City Impression (Tall) */}
+          <div className="bg-[#f0f9f6] rounded-[2rem] p-4 flex flex-col border border-emerald-100 shadow-sm overflow-hidden group">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-base font-black text-slate-800">城市印象</h3>
+            </div>
+            <div className="flex-1 relative rounded-2xl overflow-hidden">
+              <img 
+                src={`${import.meta.env.BASE_URL}guiyang/banner.jpg`} 
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                alt="城市印象"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex flex-col justify-end p-4">
+                <h4 className="text-white text-lg font-black italic drop-shadow-lg">多彩贵州 · 筑城之心</h4>
               </div>
             </div>
-            <div className="absolute top-6 left-6">
-               <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
-                 <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                 <span className="text-[9px] text-white font-black uppercase tracking-widest">Live Official</span>
-               </div>
-            </div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <h4 className="text-white text-2xl font-black italic drop-shadow-lg">爽爽贵阳 · 遇见林城</h4>
-              <p className="text-white/80 text-[10px] mt-2 font-medium line-clamp-1">贵阳市文旅厅官方推介视频：在这里，看见多彩贵州的心跳。</p>
-            </div>
           </div>
-          
-          {/* Photo Cards */}
-          <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-            <img src={`${import.meta.env.BASE_URL}guiyang/jiaxiulou.jpeg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="图文介绍" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <div className="absolute bottom-3 left-3">
-              <p className="text-white text-[10px] font-black">城市图文</p>
-              <p className="text-white/60 text-[8px] font-bold">夜色南明河</p>
+
+          {/* Right: Attractions & Activities (Stacked) */}
+          <div className="flex flex-col gap-4">
+            {/* Top Right: Popular Attractions */}
+            <div className="flex-1 bg-[#fdf6f0] rounded-[2rem] p-4 flex flex-col border border-orange-100 shadow-sm overflow-hidden group">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-black text-slate-800">热门景点</h3>
+                <span className="text-[10px] font-bold text-orange-600">更多 ›</span>
+              </div>
+              <div className="flex-1 relative rounded-xl overflow-hidden">
+                <img 
+                  src={`${import.meta.env.BASE_URL}guiyang/jiaxiulou.jpeg`} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  alt="热门景点"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm p-2">
+                  <p className="text-white text-[10px] font-black text-center">甲秀楼 · 南明夜色</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-            <img src={`${import.meta.env.BASE_URL}guiyang/yangmingxinxue.png`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="文化展示" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <div className="absolute bottom-3 left-3">
-              <p className="text-white text-[10px] font-black">文化巡礼</p>
-              <p className="text-white/60 text-[8px] font-bold">知行合一</p>
+
+            {/* Bottom Right: Activities */}
+            <div className="flex-1 bg-[#f0f4f9] rounded-[2rem] p-4 flex flex-col border border-blue-100 shadow-sm overflow-hidden group">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-black text-slate-800">文旅活动</h3>
+                <span className="text-[10px] font-bold text-blue-600">更多 ›</span>
+              </div>
+              <div className="flex-1 relative rounded-xl overflow-hidden">
+                <img 
+                  src={`${import.meta.env.BASE_URL}guiyang/qingyunshiji.jpg`} 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  alt="文旅活动"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm p-2">
+                  <p className="text-white text-[10px] font-black text-center">“筑”梦未来 · 避暑季</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. [线路 Route] - Recommended Routes (NEW SECTION) */}
-      <section className="px-6 mt-16">
-        <div className="flex items-end justify-between mb-6">
+      {/* 5. [线路 Route] - Recommended Routes (HORIZONTAL CARDS) */}
+      <section className="mt-12">
+        <div className="px-6 flex items-end justify-between mb-6">
            <div>
-             <span className="text-[10px] font-black text-blue-600 tracking-widest uppercase">Routes / 线路</span>
+             <span className="text-[10px] font-black text-emerald-600 tracking-widest uppercase">Routes / 线路</span>
              <h3 className="text-2xl font-black text-slate-800 italic">经典线路 · 玩转筑城</h3>
            </div>
+           <button className="text-[10px] font-black text-slate-400">全部路线 ›</button>
         </div>
-        <div className="space-y-4">
-          {[
-            { name: '“森”呼吸·康养之旅', desc: '黔灵山公园 - 观山湖公园 - 贵阳森林公园', time: '1-2天', color: 'border-emerald-100 bg-emerald-50/30' },
-            { name: '“筑”精魂·文化之旅', desc: '甲秀楼 - 翠微园 - 阳明祠 - 省博物馆', time: '1天', color: 'border-blue-100 bg-blue-50/30' },
-          ].map((route, i) => (
-            <div key={i} className={`p-5 rounded-[2rem] border ${route.color} relative overflow-hidden group cursor-pointer active:scale-[0.98] transition-transform`}>
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-base font-black text-slate-800">{route.name}</h4>
-                  <span className="text-[9px] font-black px-2 py-0.5 bg-white/60 rounded-full text-slate-500">{route.time}</span>
+        <div className="flex overflow-x-auto no-scrollbar gap-5 px-6 pb-4">
+          {routeList.map((route, i) => (
+            <div key={i} className="min-w-[280px] bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 group cursor-pointer active:scale-[0.98] transition-all">
+              <div className="h-44 relative overflow-hidden">
+                <img src={route.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt={route.name} />
+                <div className="absolute top-4 left-4 flex gap-2">
+                  <span className="bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-[9px] text-white font-black border border-white/20 uppercase tracking-widest">
+                    {route.tag}
+                  </span>
+                  <span className="bg-emerald-600/80 backdrop-blur-md px-3 py-1 rounded-full text-[9px] text-white font-black border border-white/20 uppercase tracking-widest">
+                    {route.time}
+                  </span>
                 </div>
-                <p className="text-[11px] text-slate-500 font-medium">{route.desc}</p>
               </div>
-              <div className="absolute top-1/2 -right-4 -translate-y-1/2 text-6xl opacity-[0.05] font-black italic group-hover:right-0 transition-all duration-500">
-                ROUTE
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-base font-black text-slate-900">{route.name}</h4>
+                  <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-emerald-50 group-hover:text-emerald-600 transition-colors">
+                    →
+                  </div>
+                </div>
+                <p className="text-[11px] text-slate-500 font-medium leading-relaxed h-8 line-clamp-2">{route.desc}</p>
               </div>
             </div>
           ))}
