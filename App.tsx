@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { ScreenType } from './types';
+import { DEFAULT_DETAILS, DEFAULT_GOALS, DEFAULT_QUESTIONS, FeatureDetail, ProviderType } from './constants/defaultData';
 import MobilePreview from './components/MobilePreview';
 import ScreenSearch from './components/ScreenSearch';
 import ScreenMap from './components/ScreenMap';
@@ -12,15 +13,6 @@ import ScreenCityLiupanshui from './components/ScreenCityLiupanshui';
 const STORAGE_KEY_DETAILS = 'gz_amap_v12_annotations';
 const STORAGE_KEY_QS = 'guizhou_amap_v4_questions';
 const STORAGE_KEY_GOALS = 'guizhou_amap_v4_goals';
-
-type ProviderType = '高德地图' | '黄小西' | '贵州文旅';
-
-interface FeatureDetail {
-  id: string;
-  title: string;
-  description: string;
-  provider: ProviderType;
-}
 
 const PROVIDER_CONFIG: Record<ProviderType, { bg: string, text: string, border: string, dot: string }> = {
   '高德地图': { bg: 'bg-blue-600/20', text: 'text-blue-400', border: 'border-blue-500/30', dot: 'bg-blue-500' },
@@ -67,34 +59,50 @@ const App: React.FC = () => {
   
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const defaultDetails: FeatureDetail[] = [
-    { id: 'banner', title: '品牌 Banner', description: '视觉核心，承载“多彩贵州”年度主题。支持跳转沉浸式专题页面。', provider: '贵州文旅' },
-    { id: 'ai_assistant', title: 'AI 伴游 (黄小西)', description: '基于LBS的智能语音讲解核心。靠近景点自动触发语音导览与历史深度解析。', provider: '黄小西' },
-    { id: 'itinerary', title: '行程规划', description: '智能路线引擎。结合交通大数据，提供2-5天不等的主题化游玩路线。', provider: '黄小西' },
-    { id: 'order', title: '快捷订购', description: '文旅供应链闭环。整合门票、特产及酒店，支持地图内一键下单支付。', provider: '黄小西' },
-    { id: 'city_reach', title: '全省一键达', description: '九市州流量导航入口矩阵。利用高德的一级入口能力实现全域引流。', provider: '高德地图' },
-    { id: 'cat_tips', title: '游黔贴士', description: '智慧出行行前指南。涵盖气候预警、民俗禁忌及交通接驳详细建议。', provider: '贵州文旅' },
-    { id: 'cat_news', title: '旅游资讯', description: '官方文旅动态聚合流。实时发布全省最新的活动优惠、政策及景区预警。', provider: '贵州文旅' },
-    { id: 'lifestyle_channels', title: '生活频道聚合', description: '生活方式深度引导。通过高德评价体系提供有温度的本地化吃喝玩乐导览。', provider: '高德地图' },
-    { id: 'nightlife', title: '高德扫街榜', description: '大数据实战榜单。基于真实消费热度挖掘贵州最具烟火气的宝藏店面。', provider: '高德地图' },
-    { id: 'itinerary_strategy', title: '城市行程攻略', description: '深度定制卡片。支持一键跟走，将攻略点位直接转化为导航轨迹点。', provider: '高德地图' },
-    { id: '3d_scenery', title: '3D 奇境渲染', description: '高精度数字孪生建模。对核心景区进行云端渲染，提供全景沉浸预游体验。', provider: '高德地图' }
-  ];
-
   const [details, setDetails] = useState<FeatureDetail[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_DETAILS);
-    return saved ? JSON.parse(saved) : defaultDetails;
+    return saved ? JSON.parse(saved) : DEFAULT_DETAILS;
   });
 
   const [goals, setGoals] = useState<string[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_GOALS);
-    return saved ? JSON.parse(saved) : ['构建“省-市-景”三级联动体系', '流量精准高效转化', '统一全省数字化导览交互标准'];
+    return saved ? JSON.parse(saved) : DEFAULT_GOALS;
   });
 
   const [questions, setQuestions] = useState<string[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY_QS);
-    return saved ? JSON.parse(saved) : ['离线缓存策略', '语音冲突处理逻辑', '动态权重算法应用'];
+    return saved ? JSON.parse(saved) : DEFAULT_QUESTIONS;
   });
+
+  const handlePersistence = () => {
+    const configData = {
+      DEFAULT_DETAILS: details,
+      DEFAULT_GOALS: goals,
+      DEFAULT_QUESTIONS: questions
+    };
+    
+    const blob = new Blob([JSON.stringify(configData, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'defaultData_update.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    
+    alert('已导出最新配置 JSON。请将其发送给 AI 助手，以永久更新程序源代码！\n\n(Next time you open, browser will still use your local changes. Sending to AI makes it permanent in the code.)');
+  };
+
+  const handleReset = () => {
+    if (confirm('确定要重置所有修改吗？这将恢复到程序定义的初始状态。')) {
+      localStorage.removeItem(STORAGE_KEY_DETAILS);
+      localStorage.removeItem(STORAGE_KEY_GOALS);
+      localStorage.removeItem(STORAGE_KEY_QS);
+      setDetails(DEFAULT_DETAILS);
+      setGoals(DEFAULT_GOALS);
+      setQuestions(DEFAULT_QUESTIONS);
+      window.location.reload();
+    }
+  };
 
   const handleUpdateDetail = (id: string, field: keyof FeatureDetail, val: string) => {
     const newDetails = details.map(d => d.id === id ? { ...d, [field]: val } : d);
@@ -219,8 +227,26 @@ const App: React.FC = () => {
           </h1>
           <p className="text-slate-400 text-sm font-medium opacity-50">省、市、景三级联动数字化对接方案图</p>
         </div>
-        
-        <nav className="flex bg-white/5 backdrop-blur-2xl p-1 rounded-2xl border border-white/10">
+
+        <div className="flex flex-col items-end gap-3">
+          <div className="flex gap-2">
+            <button 
+              onClick={handlePersistence}
+              className="px-4 py-2 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all flex items-center gap-2"
+              title="导出当前配置以更新源码"
+            >
+              💾 写入程序
+            </button>
+            <button 
+              onClick={handleReset}
+              className="px-4 py-2 bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all flex items-center gap-2"
+              title="重置为源码默认值"
+            >
+              🔄 重置默认
+            </button>
+          </div>
+          
+          <nav className="flex bg-white/5 backdrop-blur-2xl p-1 rounded-2xl border border-white/10">
           {[ScreenType.SEARCH, ScreenType.MAP, ScreenType.ASSISTANT].map((type) => (
             <button
               key={type}
@@ -234,7 +260,8 @@ const App: React.FC = () => {
               {type === ScreenType.ASSISTANT && '省级中心'}
             </button>
           ))}
-        </nav>
+          </nav>
+        </div>
       </header>
 
       <main className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">

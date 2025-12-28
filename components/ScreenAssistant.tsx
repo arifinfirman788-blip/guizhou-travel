@@ -15,9 +15,9 @@ const ScreenAssistant: React.FC<Props> = ({
   onCityDblClick 
 }) => {
   const categories = [
-    { id: 'cat_food', title: '美食', icon: '🍲', img: 'image/肠旺面.jpeg' },
-    { id: 'cat_scenery', title: '美景', icon: '⛰️', img: 'image/8b28c747fb1bfeccd123c823c726afa5.jpeg' },
-    { id: 'cat_stay', title: '美宿', icon: '🏨', img: 'image/饭店.png' },
+    { id: 'cat_food', title: '美食', icon: '🍲', img: '/guizhou-travel/image/肠旺面.jpeg' },
+    { id: 'cat_scenery', title: '美景', icon: '⛰️', img: '/guizhou-travel/image/8b28c747fb1bfeccd123c823c726afa5.jpeg' },
+    { id: 'cat_stay', title: '美宿', icon: '🏨', img: '/guizhou-travel/image/饭店.png' },
   ];
 
   const handleImgError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
@@ -42,15 +42,15 @@ const row2 = [
 
   const getCityImg = (name: string) => {
     const cityMap: Record<string, string> = {
-      '贵阳': 'https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145446.webp',
-      '六盘水': 'https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145448.webp',
-      '遵义': 'https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145447.webp',
-      '铜仁': 'https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145450.webp',
-      '黔东南自治州': 'https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145450_1.webp',
-      '安顺': 'https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145451.webp',
-      '毕节': 'image/fGi0ZO0wi.png',
-      '黔南自治州': 'image/fGi1AwvnX.png',
-      '黔西南自治州': 'image/fGi09XqGM.png'
+      '贵阳': '/guizhou-travel/image/贵阳.png',
+      '六盘水': '/guizhou-travel/image/六盘水.png',
+      '遵义': '/guizhou-travel/image/遵义.png',
+      '铜仁': '/guizhou-travel/image/铜仁.png',
+      '黔东南自治州': '/guizhou-travel/image/黔东南.png',
+      '安顺': '/guizhou-travel/image/安顺.png',
+      '毕节': '/guizhou-travel/image/fGi0ZO0wi.png',
+      '黔南自治州': '/guizhou-travel/image/fGi1AwvnX.png',
+      '黔西南自治州': '/guizhou-travel/image/fGi09XqGM.png'
     };
     return cityMap[name] || 'https://img.lenyiin.com/app/hide.php?key=UHhBLzV6Mnc2VmU3a2hGRGsxMzJCdWNjRTMxQlEwMkZIRC8vY29ZPQ==';
   };
@@ -59,13 +59,13 @@ const row2 = [
     { 
       title: '蘑菇屋寻龙记6日', 
       desc: '6天5晚 | 贵阳市出发 | 9.6分',
-      img: 'image/微信图片_20251227152922_176_144.png', 
+      img: '/guizhou-travel/image/微信图片_20251227152922_176_144.png', 
       tag: '亲子研学' 
     },
     { 
       title: '【2026奢享贵州奇遇记】', 
       desc: '6天5晚 | 贵阳市出发',
-      img: 'image/微信图片_20251227153104_177_144.png', 
+      img: '/guizhou-travel/image/微信图片_20251227153104_177_144.png', 
       tag: '探秘宇宙' 
     }
   ];
@@ -155,8 +155,8 @@ const row2 = [
                     className="w-12 h-12 bg-no-repeat bg-contain"
                     style={{ 
                       backgroundImage: `url(${getCityImg(city.name)})`,
-                      backgroundSize: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('image/')) ? 'contain' : '300% 300%',
-                      backgroundPosition: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('image/')) ? 'center' : `${city.x * 50}% ${city.y * 50}%`,
+                      backgroundSize: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('/guizhou-travel/image/')) ? 'contain' : '300% 300%',
+                      backgroundPosition: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('/guizhou-travel/image/')) ? 'center' : `${city.x * 50}% ${city.y * 50}%`,
                       mixBlendMode: 'multiply'
                     }}
                   />
@@ -176,8 +176,8 @@ const row2 = [
                     className="w-11 h-11 bg-no-repeat bg-contain"
                     style={{ 
                       backgroundImage: `url(${getCityImg(city.name)})`,
-                      backgroundSize: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('image/')) ? 'contain' : '300% 300%',
-                      backgroundPosition: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('image/')) ? 'center' : `${city.x * 50}% ${city.y * 50}%`,
+                      backgroundSize: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('/guizhou-travel/image/')) ? 'contain' : '300% 300%',
+                      backgroundPosition: (getCityImg(city.name).includes('thumb.php') || getCityImg(city.name).startsWith('/guizhou-travel/image/')) ? 'center' : `${city.x * 50}% ${city.y * 50}%`,
                       mixBlendMode: 'multiply'
                     }}
                   />
@@ -243,7 +243,7 @@ const row2 = [
           className={`relative h-44 rounded-[2.5rem] overflow-hidden shadow-2xl border transition-all cursor-pointer ${activeFeatureId === 'nightlife' ? 'border-amber-400 ring-2 ring-amber-400' : 'border-white/5'}`}
           onClick={() => onFeatureClick?.('nightlife')}
         >
-           <img src="image/b1eadaddc2e4a2ae349504b7d394389f.jpeg" className="w-full h-full object-cover opacity-70 transition-transform duration-[2000ms] hover:scale-110" />
+           <img src="/guizhou-travel/image/b1eadaddc2e4a2ae349504b7d394389f.jpeg" className="w-full h-full object-cover opacity-70 transition-transform duration-[2000ms] hover:scale-110" />
            <div className="absolute inset-0 bg-gradient-to-t from-[#05307a] via-transparent to-transparent z-10"></div>
            <div className="absolute bottom-6 left-6 right-6 z-20">
               <div className="flex items-center gap-2 mb-2">
@@ -290,7 +290,7 @@ const row2 = [
           className={`bg-gradient-to-br from-blue-700/40 to-blue-900/20 rounded-[2.5rem] p-8 border transition-all cursor-pointer relative overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] ${activeFeatureId === '3d_scenery' ? 'border-blue-400 ring-2 ring-blue-400' : 'border-white/5'}`}
           onClick={() => onFeatureClick?.('3d_scenery')}
         >
-           <img src="image/6dae127fd663ec0fb73ac40403205392.jpeg" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+           <img src="/guizhou-travel/image/6dae127fd663ec0fb73ac40403205392.jpeg" className="absolute inset-0 w-full h-full object-cover opacity-40" />
            <div className="absolute inset-0 bg-gradient-to-r from-[#05307a] via-transparent to-transparent z-10"></div>
            <div className="flex gap-6 items-center relative z-20">
               <div className="flex-1">

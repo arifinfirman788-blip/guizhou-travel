@@ -11,7 +11,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       name: '01 / 肠旺面 · 晨起的仪式', 
       desc: '血嫩、面脆、哨香，这一口鲜辣开启了筑城的清晨。', 
       tag: '百年非遗',
-      img: 'image/肠旺面.jpeg'
+      img: '/guizhou-travel/image/肠旺面.jpeg'
     },
     { 
       name: '02 / 酸汤鱼 · 苗岭的馈赠', 
@@ -29,7 +29,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       name: '04 / 青岩豆腐 · 岁月留香', 
       desc: '古法炭火烘烤，外焦里嫩，蘸上特制辣椒水，满口生香。', 
       tag: '古镇记忆',
-      img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=400&h=300&fit=crop'
+      img: '/guizhou-travel/guiyang/qingyanguzhen.png'
     }
   ];
 
@@ -39,7 +39,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       {/* 1. Hero Promotion Section */}
       <div className="relative h-[420px] w-full flex-shrink-0">
         <img 
-          src="https://img.lenyiin.com/app/hide.php?key=S09hYzFjR21sWm5HTmhER0x2VldWdWNjRTMxQlEwMkZIRC8vY29ZPQ==" 
+          src="/guizhou-travel/guiyang/banner.jpg" 
           alt="爽爽贵阳" 
           className="w-full h-full object-cover"
         />
@@ -111,7 +111,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
               </div>
             </div>
             <div className="h-40 rounded-[2rem] overflow-hidden">
-              <img src="https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145446.webp" className="w-full h-full object-cover grayscale opacity-80" alt="文化传承" />
+              <img src="/guizhou-travel/guiyang/yangmingxinxue.png" className="w-full h-full object-cover grayscale opacity-80" alt="文化传承" />
             </div>
           </div>
 
@@ -170,7 +170,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
         <div className="space-y-6">
           <div className="relative h-52 rounded-[2.5rem] overflow-hidden shadow-lg group">
-            <img src="image/8b28c747fb1bfeccd123c823c726afa5.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+            <img src="/guizhou-travel/guiyang/jiaxiulou.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6">
                <h4 className="text-white text-xl font-black italic">甲秀楼 · 傲立南明河</h4>
@@ -179,12 +179,12 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative h-44 rounded-[2rem] overflow-hidden shadow-md group">
-               <img src="https://images.unsplash.com/photo-1507502707334-0725d763284f?w=400&h=400&fit=crop" className="w-full h-full object-cover" />
+               <img src="/guizhou-travel/guiyang/qianlings.png" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-black/20"></div>
                <div className="absolute bottom-4 left-4 text-white text-[12px] font-black">黔灵山 · 城市之肺</div>
             </div>
             <div className="relative h-44 rounded-[2rem] overflow-hidden shadow-md group">
-               <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&h=400&fit=crop" className="w-full h-full object-cover" />
+               <img src="/guizhou-travel/guiyang/qingyanguzhen.png" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-black/20"></div>
                <div className="absolute bottom-4 left-4 text-white text-[12px] font-black">青岩古镇 · 明清时光</div>
             </div>
@@ -202,8 +202,8 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
         <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4">
            {[
-             { name: '隐山悦境', desc: '在森林里醒来，呼吸纯氧', img: 'image/饭店.png' },
-             { name: '古镇听风', desc: '青岩古道旁的百年静谧', img: 'image/饭店.png' },
+             { name: '隐山悦境', desc: '在森林里醒来，呼吸纯氧', img: '/guizhou-travel/image/饭店.png' },
+             { name: '古镇听风', desc: '青岩古道旁的百年静谧', img: '/guizhou-travel/image/饭店.png' },
            ].map((stay, i) => (
              <div key={i} className="min-w-[260px] group">
                 <div className="h-40 rounded-[2.5rem] overflow-hidden shadow-md mb-3">
