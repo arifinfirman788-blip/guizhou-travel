@@ -11,7 +11,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       name: '01 / 肠旺面 · 晨起的仪式', 
       desc: '血嫩、面脆、哨香，这一口鲜辣开启了筑城的清晨。', 
       tag: '百年非遗',
-      img: '/guizhou-travel/image/肠旺面.jpeg'
+      img: `${import.meta.env.BASE_URL}image/肠旺面.jpeg`
     },
     { 
       name: '02 / 酸汤鱼 · 苗岭的馈赠', 
@@ -29,7 +29,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       name: '04 / 青岩豆腐 · 岁月留香', 
       desc: '古法炭火烘烤，外焦里嫩，蘸上特制辣椒水，满口生香。', 
       tag: '古镇记忆',
-      img: '/guizhou-travel/guiyang/qingyanguzhen.png'
+      img: `${import.meta.env.BASE_URL}guiyang/qingyanguzhen.png`
     }
   ];
 
@@ -39,7 +39,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
       {/* 1. Hero Promotion Section */}
       <div className="relative h-[420px] w-full flex-shrink-0">
         <img 
-          src="/guizhou-travel/guiyang/banner.jpg" 
+          src={`${import.meta.env.BASE_URL}guiyang/banner.jpg`} 
           alt="爽爽贵阳" 
           className="w-full h-full object-cover"
         />
@@ -111,7 +111,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
               </div>
             </div>
             <div className="h-40 rounded-[2rem] overflow-hidden">
-              <img src="/guizhou-travel/guiyang/yangmingxinxue.png" className="w-full h-full object-cover grayscale opacity-80" alt="文化传承" />
+              <img src={`${import.meta.env.BASE_URL}guiyang/yangmingxinxue.png`} className="w-full h-full object-cover grayscale opacity-80" alt="文化传承" />
             </div>
           </div>
 
@@ -170,7 +170,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
         </div>
         <div className="space-y-6">
           <div className="relative h-52 rounded-[2.5rem] overflow-hidden shadow-lg group">
-            <img src="/guizhou-travel/guiyang/jiaxiulou.jpeg" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+            <img src={`${import.meta.env.BASE_URL}guiyang/jiaxiulou.jpeg`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
             <div className="absolute bottom-6 left-6 right-6">
                <h4 className="text-white text-xl font-black italic">甲秀楼 · 傲立南明河</h4>
@@ -179,13 +179,15 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative h-44 rounded-[2rem] overflow-hidden shadow-md group">
-               <img src="/guizhou-travel/guiyang/qianlings.png" className="w-full h-full object-cover" />
-               <div className="absolute inset-0 bg-black/20"></div>
+               <img src={`${import.meta.env.BASE_URL}guiyang/qianlings.png`} className="w-full h-full object-cover" />
+               <div className="absolute inset-0 bg-black/20">
+               </div>
                <div className="absolute bottom-4 left-4 text-white text-[12px] font-black">黔灵山 · 城市之肺</div>
             </div>
             <div className="relative h-44 rounded-[2rem] overflow-hidden shadow-md group">
-               <img src="/guizhou-travel/guiyang/qingyanguzhen.png" className="w-full h-full object-cover" />
-               <div className="absolute inset-0 bg-black/20"></div>
+               <img src={`${import.meta.env.BASE_URL}guiyang/qingyanguzhen.png`} className="w-full h-full object-cover" />
+               <div className="absolute inset-0 bg-black/20">
+               </div>
                <div className="absolute bottom-4 left-4 text-white text-[12px] font-black">青岩古镇 · 明清时光</div>
             </div>
           </div>
@@ -225,7 +227,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
            </div>
         </div>
         <div className="relative h-64 rounded-[3rem] overflow-hidden shadow-2xl group">
-          <img src="/guizhou-travel/guiyang/qingyunshiji.jpg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+          <img src={`${import.meta.env.BASE_URL}guiyang/qingyunshiji.jpg`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
           <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent p-8 flex flex-col justify-end">
               <span className="text-purple-300 text-[9px] font-black tracking-[0.2em] uppercase mb-2">Pop Culture</span>
               <h4 className="text-white text-2xl font-black italic">青云市集 · 赛博贵阳</h4>
