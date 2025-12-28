@@ -225,7 +225,7 @@ const ScreenCityGuiyang: React.FC<Props> = ({ onBack }) => {
            </div>
         </div>
         <div className="relative h-64 rounded-[3rem] overflow-hidden shadow-2xl group">
-          <img src="https://img.lenyiin.com/app/thumb.php?img=image/2025/12/27/145446.webp" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+          <img src="/guizhou-travel/guiyang/qingyunshiji.jpg" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
           <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent p-8 flex flex-col justify-end">
               <span className="text-purple-300 text-[9px] font-black tracking-[0.2em] uppercase mb-2">Pop Culture</span>
               <h4 className="text-white text-2xl font-black italic">青云市集 · 赛博贵阳</h4>
